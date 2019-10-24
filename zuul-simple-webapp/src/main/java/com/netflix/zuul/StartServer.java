@@ -41,6 +41,39 @@ import org.slf4j.LoggerFactory;
  *
  *  用户需要创建一个java类实现该接口，并提供上述方法的实现。
  *
+ *
+ *  // 当你需要在处理任何客户端请求之前创建一个数据库连接，
+ *  // 并且希望在整个应用过程中该连接都是可用的，这个时候ServletContextListener接口就会十分有用了。
+ *
+ *  public class DatabaseContextListener implements ServletContextListener {
+ *
+ *          private ServletContext context = null;
+ *          private Connection conn = null;
+ *
+ *          public DatabaseContextListener() {
+ *
+ *          }
+ *
+ *
+ *          //该方法在ServletContext启动之后被调用，并准备好处理客户端请求
+ *          public void contextInitialized(ServletContextEvent event)  {
+ *                  this.context = event.getServletContext();
+ *                  conn = DbConnection.getConnection;
+ *                  // 这里DbConnection是一个定制好的类用以创建一个数据库连接
+ *                  context = setAttribute(”dbConn”,conn);
+ *          }
+ *
+ *          //这个方法在ServletContext 将要关闭的时候调用
+ *          public void contextDestroyed(ServletContextEvent event){
+ *                  this.context = null;
+ *                  this.conn = null;
+ *          }
+ *  }
+ * //并在 web.xml 中增加以下配置
+ *      <listener>
+ *          com.database.DatabaseContextListener
+ *      </listener>
+ *
  * @author  xxx
  */
 public class StartServer implements ServletContextListener {
