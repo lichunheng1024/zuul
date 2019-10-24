@@ -78,7 +78,9 @@ public class FilterFileManager {
 
         INSTANCE.aDirectories = directories;
         INSTANCE.pollingIntervalSeconds = pollingIntervalSeconds;
+        //读取 groovy文件
         INSTANCE.manageFiles();
+        //开启定时调度任务 每5秒中扫描一次
         INSTANCE.startPoller();
 
     }

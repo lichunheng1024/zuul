@@ -27,6 +27,22 @@ import javax.servlet.ServletContextListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 服务启动时的入口类 实现了 ServletContextListener 接口。
+ *
+ *
+ *
+ *  ServletContextListener 继承 EventListener ,开发者能够在为客户端请求提供服务之前向ServletContext中添加任意的对象。
+ *  这个对象在ServletContext启动的时候被初始化，然后在ServletContext 整个运行期间都是可见的。
+ *
+ *  该接口拥有两个方法：
+ *          contextDestroyed(ServletContextEvent sce)
+ *          contextInitialized(ServletContextEvent sce)
+ *
+ *  用户需要创建一个java类实现该接口，并提供上述方法的实现。
+ *
+ * @author  xxx
+ */
 public class StartServer implements ServletContextListener {
 
     private static final Logger logger = LoggerFactory.getLogger(StartServer.class);
@@ -53,6 +69,9 @@ public class StartServer implements ServletContextListener {
     private void initGroovyFilterManager() {
         FilterLoader.getInstance().setCompiler(new GroovyCompiler());
 
+        /**
+            在 build 编译时指定了：System.setProperty("zuul.filter.root", "src/main/groovy/filters")
+         */
         String scriptRoot = System.getProperty("zuul.filter.root", "");
         if (scriptRoot.length() > 0) scriptRoot = scriptRoot + File.separator;
         try {
