@@ -38,6 +38,7 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 /**
+ * ZuulFilter过滤器执行的核心类
  * This the the core class to execute filters.
  *
  * @author Mikey Cohen
@@ -45,7 +46,7 @@ import static org.mockito.Mockito.*;
  *         Time: 12:47 PM
  */
 public class FilterProcessor {
-
+    //采用饿汉式，上来就创建对象
     static FilterProcessor INSTANCE = new FilterProcessor();
     protected static final Logger logger = LoggerFactory.getLogger(FilterProcessor.class);
 

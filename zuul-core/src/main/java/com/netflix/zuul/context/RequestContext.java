@@ -23,6 +23,7 @@ import java.io.InputStream;
 import java.io.NotSerializableException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -66,6 +67,7 @@ public class RequestContext extends ConcurrentHashMap<String, Object> {
         @Override
         protected RequestContext initialValue() {
             try {
+                System.out.println("我是threadLocal中的initialValue方法，我执行了"+ LocalDateTime.now().toLocalTime());
                 return contextClass.newInstance();
             } catch (Throwable e) {
                 throw new RuntimeException(e);

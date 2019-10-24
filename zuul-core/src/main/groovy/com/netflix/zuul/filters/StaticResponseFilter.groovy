@@ -23,7 +23,7 @@ import com.netflix.zuul.ZuulFilter
 import com.netflix.zuul.context.RequestContext
 
 /**
- * Abstract class to return content directly fron Zuul,
+ * Abstract class to return content directly from Zuul,
  * If this filter is executed, the  "route" filters will be bypassed,
  * so the request will not be forwarded to an origin.
  * the uri() method may return a String or a List of matching URI's.

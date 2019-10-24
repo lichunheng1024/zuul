@@ -20,6 +20,8 @@ import java.io.File;
 
 
 /**
+ *
+ * 动态code编译器,主要职责是为了处理动态新增 的groovy类型的 Filter 文件
  * Interface to generate Classes from source code
  * User: mcohen
  * Date: 5/30/13

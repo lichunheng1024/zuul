@@ -127,6 +127,11 @@ public class FilterFileManager {
         if (!directory.isDirectory()) {
             URL resource = FilterFileManager.class.getClassLoader().getResource(sPath);
             try {
+                /*
+/Users/lch/Documents/dev_home/apache-tomcat-8.5.47/webapps/Gradle___com_netflix_zuul___zuul_simple_webapp_1_4_0_SNAPSHOT_war/WEB-INF/classes/pre/DebugRequest.groovy
+/Users/lch/Documents/dev_home/apache-tomcat-8.5.47/webapps/Gradle___com_netflix_zuul___zuul_simple_webapp_1_4_0_SNAPSHOT_war/WEB-INF/classes/pre/DebugFilter.groovy
+/Users/lch/Documents/dev_home/apache-tomcat-8.5.47/webapps/Gradle___com_netflix_zuul___zuul_simple_webapp_1_4_0_SNAPSHOT_war/WEB-INF/classes/pre/PreDecorationFilter.groovy
+                 */
                 directory = new File(resource.toURI());
             } catch (Exception e) {
                 LOG.error("Error accessing directory in classloader. path=" + sPath, e);

@@ -37,13 +37,28 @@ import static org.mockito.Mockito.*;
 
 /**
  * Base abstract class for ZuulFilters. The base class defines abstract methods to define:
- * filterType() - to classify a filter by type. Standard types in Zuul are "pre" for pre-routing filtering,
- * "route" for routing to an origin, "post" for post-routing filters, "error" for error handling.
+ *
+ *
+ * filterType() - to classify a filter by type.
+ *
+ * Standard types in Zuul are
+ *      "pre" for pre-routing filtering,
+ *      "route" for routing to an origin,
+ *      "post" for post-routing filters,
+ *      "error" for error handling.
+ *
  * We also support a "static" type for static responses see  StaticResponseFilter.
  * Any filterType made be created or added and run by calling FilterProcessor.runFilters(type)
  * <p/>
- * filterOrder() must also be defined for a filter. Filters may have the same  filterOrder if precedence is not
- * important for a filter. filterOrders do not need to be sequential.
+ *
+ * filterOrder() must also be defined for a filter.
+ * 过滤器还一定拥有一个 filterOrder() 排序方法，该方法用于返回当前order的顺序
+ *
+ * Filters may have the same  filterOrder if precedence is not important for a filter.
+ * 过滤器可以拥有相同的排序，如果执行优先级对于一个过滤器来说没有那么重要。
+ *
+ * filterOrders do not need to be sequential.
+ * 过滤器排序order 不必一定要连续的，
  * <p/>
  * ZuulFilters may be disabled using Archius Properties.
  * <p/>
